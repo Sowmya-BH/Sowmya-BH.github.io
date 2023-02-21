@@ -6,6 +6,7 @@
 * Data Science
 * Data Mining
 * Data Analytics
+* NLP
 
 
 ### Projects:
