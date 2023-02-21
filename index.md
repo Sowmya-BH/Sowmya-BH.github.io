@@ -1,6 +1,6 @@
-# Profile
-# Sowmya Bhupatiraju
-## DataScience
+# Profile                                                                             # Projects:
+# Sowmya Bhupatiraju                                                                  ### Insurance Customer Segmentation Analysis
+## DataScience                                                                    
 ### Skills:
 * Data Visualization
 * Data Science
