@@ -1,5 +1,5 @@
 # Profile:                                                                              
-# Sowmya Bhupatiraju  ![this is alt-text for this fig](https://brandeps.com/icon/G/Github-square-02)                                                              
+# Sowmya Bhupatiraju                                                              
 ## DataScience | Data Analyst                                                                   
 ### Skills:
 * Data Visualization
