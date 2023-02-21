@@ -1,6 +1,6 @@
-# Profile                                                                             
+# Profile:                                                                              
 # Sowmya Bhupatiraju                                                                 
-## DataScience                                                                    
+## DataScience | Data Analyst                                                                   
 ### Skills:
 * Data Visualization
 * Data Science
