@@ -1,8 +1,15 @@
-# Profile                                                                             # Projects:
-# Sowmya Bhupatiraju                                                                  ### Insurance Customer Segmentation Analysis
+# Profile                                                                             
+# Sowmya Bhupatiraju                                                                 
 ## DataScience                                                                    
 ### Skills:
 * Data Visualization
 * Data Science
 * Data Mining
 * Data Analytics
+
+
+### Projects:
+* Insurance Customer Segmentation Analysis
+* Road Traffic Severity Prediction
+* Cat Dog classification using CNN
+* Cyberbullying Detection Text Classification
