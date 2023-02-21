@@ -14,3 +14,4 @@
 * Road Traffic Severity Prediction
 * Cat Dog classification using CNN
 * Cyberbullying Detection Text Classification
+* BASKETBALL Analytics
