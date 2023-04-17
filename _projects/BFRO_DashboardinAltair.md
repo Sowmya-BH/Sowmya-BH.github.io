@@ -37,6 +37,6 @@ This project shows how to use VegaLite Altair to make plots and then combine the
 </div>
 
 <div class="right">
-{% include elements/button.html link="https://github.com/jnaiman/online_cv_public/blob/main/python_notebooks/test_generate_plots.ipynb" text="The Analysis" %}
+{% include elements/button.html link="https://github.com/jnaiman/online_cv_public/blob/main/python_notebooks/Ass10rough.ipynb" text="The Analysis" %}
 </div>
 
