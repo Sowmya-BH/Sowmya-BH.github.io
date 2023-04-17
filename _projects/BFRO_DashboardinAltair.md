@@ -16,10 +16,13 @@ custom_js:
 This project shows how to use VegaLite Altair to make plots and then combine them into a dashboard 
 
 ```
-<vegachart schema-url="{{ site.baseurl }}/assets/json/visualization.vl.json" style="width: 100%"></vegachart>
+<vegachart schema-url="{{ site.baseurl }}/assets/json/cars.json" style="width: 100%"></vegachart>
 ```
 
 ## 1. First plot from jupyter notebook
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/visualization.vl.json" style="width: 100%"></vegachart>
+
 
 <!-- these are written in a combo of html and liquid --> 
 
