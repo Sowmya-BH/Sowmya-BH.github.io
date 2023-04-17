@@ -1,7 +1,7 @@
 ---
 name: BigFoot Dashboard using VegaLite-Altair
 tools: [Python, Altair, HTML, vega-lite]
-image: assets/pngs/cars.png
+image: assets/json/visualization.vl.json
 description: This is a "showcase" dasboard that uses Altair and vega-lite for interactive viz!
 custom_js:
   - vega.min
