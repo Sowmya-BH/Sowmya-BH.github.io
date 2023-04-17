@@ -19,13 +19,14 @@ This project shows how to use VegaLite Altair to make plots and then combine the
 <vegachart schema-url="{{ site.baseurl }}/assets/json/cars.json" style="width: 100%"></vegachart>
 ```
 
-## 1. First dashboard from jupyter notebook without interactivity
-
-<vegachart schema-url="{{ site.baseurl }}/assets/json/visualization.vl.json" style="width: 100%"></vegachart>
-
-## 2. Second dashboard from jupyter notebook with interactivity
+## 1. First dashboard from jupyter notebook with interactivity
 
 <vegachart schema-url="{{ site.baseurl }}/assets/json/visualization.vl(1).json" style="width: 100%"></vegachart>
+
+
+## 2. Second dashboard from jupyter notebook without interactivity
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/visualization.vl.json" style="width: 100%"></vegachart>
 
 
 
