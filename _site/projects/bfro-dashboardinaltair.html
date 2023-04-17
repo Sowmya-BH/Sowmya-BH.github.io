@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Blog">
-  <meta property="og:description" content="I am definitely not a corgi!">
-  <meta property="og:image" content="https://dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg">
+  <meta property="og:title" content="BigFoot Dashboard using VegaLite-Altair">
+  <meta property="og:description" content="This is a "showcase" dasboard that uses Altair and vega-lite for interactive viz!">
+  <meta property="og:image" content="assets/pngs/cars.png">
 
-  <title>Blog</title>
-  <meta name="description" content="I am definitely not a corgi!">
+  <title>BigFoot Dashboard using VegaLite-Altair</title>
+  <meta name="description" content="This is a "showcase" dasboard that uses Altair and vega-lite for interactive viz!">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
@@ -59,9 +59,9 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/projects/">Projects</a>
 
-      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+      <a class="nav-item nav-link " href="/blog/">Blog</a>
 
       <a class="nav-item nav-link " href="/about/">About</a>
 
@@ -72,54 +72,37 @@
   </div>
 
 </nav>
-    <!-- Simple-Jekyll-Search https://github.com/christian-fei/Simple-Jekyll-Search -->
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1 id="bigfoot-sightings-and-temperature-by-state-an-interactive-dashboard">Bigfoot Sightings and Temperature by State: An Interactive Dashboard</h1>
 
-<div class="input-group mt-5 px-3">
-  <input id="search-input" type="text" class="form-control search-box" placeholder="Search posts..">
-  <div class="input-group-append">
-    <span class="input-group-text border border-primary bg-primary text-white">
-      <i class="fas fa-search"></i>
-    </span>
-  </div>
-  <button class="btn btn-outline-primary ml-1" onclick="location.href = '/blog/tags';">
-    <i class="fas fa-tags"></i>
-  </button>
+<p>This project shows how to use VegaLite Altair to make plots and then combine them into a dashboard</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;vegachart schema-url="/assets/json/visualization.vl.json" style="width: 100%"&gt;&lt;/vegachart&gt;
+</code></pre></div></div>
+
+<h2 id="1-first-dashboard-from-jupyter-notebook-with-interactivity">1. First dashboard from jupyter notebook with interactivity</h2>
+
+<vegachart schema-url="/assets/json/visualization.v2.json" style="width: 100%"></vegachart>
+
+<h2 id="2-second-dashboard-from-jupyter-notebook-without-interactivity">2. Second dashboard from jupyter notebook without interactivity</h2>
+
+<vegachart schema-url="/assets/json/visualization.vl.json" style="width: 100%"></vegachart>
+
+<!-- these are written in a combo of html and liquid -->
+
+<div class="left">
+<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/vega/vega/blob/main/docs/data/cars.json">
+  The Data
+</a>
 </div>
-<ul class="px-3" id="results-container"></ul>
 
-<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
-<script>
-  var sjs = SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action">{title}</a>',
-        noResultsText: '<li class="list-group-item list-group-item-action disabled">No results found</li>',
-        json: '/search.json'
-      })
-</script>
-<div class="card-group mt-2">
-
-  
-    <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/blog/hello-blog-world" class="post card bg-secondary">
-    <div class="card-body text-white">
-      <h3 class="card-title">The Hello World of Blogs</h3>
-      <p class="card-text">
-        
-        <span class="badge badge-light text-secondary">Technology</span>
-        
-        <span class="badge badge-light text-secondary">Blogging</span>
-        
-      </p>
-      <p class="card-text">This is a blog post to get you started.</p>
-    </div>
-    <div class="card-footer text-white">
-      22 August 2022
-    </div>
-  </a>
+<div class="right">
+<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/jnaiman/online_cv_public/blob/main/python_notebooks/Ass10rough.ipynb">
+  The Analysis
+</a>
 </div>
-  
-  
+
+
 </div>
   </main>
   <footer class="mt-auto py-3 text-center">
@@ -157,6 +140,17 @@
 
 </footer>
 
+
+<!-- Custom page specific js files -->
+  
+    <script src='/assets/js/vega.min.js' type="text/javascript"></script>
+  
+    <script src='/assets/js/vega-lite.min.js' type="text/javascript"></script>
+  
+    <script src='/assets/js/vega-embed.min.js' type="text/javascript"></script>
+  
+    <script src='/assets/js/justcharts.js' type="text/javascript"></script>
+  
 
 
 

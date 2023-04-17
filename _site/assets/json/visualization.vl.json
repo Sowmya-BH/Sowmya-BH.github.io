@@ -1,0 +1,32 @@
+{
+  "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
+  "vconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/bfro_reports_fall2022.csv"
+      },
+      "mark": "point",
+      "encoding": {
+        "color": {"field": "classification", "type": "nominal"},
+        "x": {"field": "state", "type": "nominal"},
+        "y": {"field": "temperature_mid", "type": "quantitative"}
+      },
+      "height": 400,
+      "width": 800
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/bfro_reports_fall2022.csv"
+      },
+      "mark": "bar",
+      "encoding": {
+        "color": {"field": "classification", "type": "nominal"},
+        "x": {"field": "state", "type": "nominal"},
+        "y": {"aggregate": "sum", "field": "number", "type": "quantitative"}
+      },
+      "height": 400,
+      "width": 800
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"
+}
