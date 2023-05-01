@@ -1,0 +1,212 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+
+library(FactoMineR) #Dataset and HCPC
+library(Hmisc) #Describe Function
+library(psych) #Multiple Functions for Statistics and Multivariate Analysis
+library(GGally) #ggpairs Function
+library(ggplot2) #ggplot2 Functions
+library(vioplot) #Violin Plot Function
+library(corrplot) #Plot Correlations
+library(REdaS) #Bartlett's Test of Sphericity
+library(psych) #PCA/FA functions
+library(factoextra) #PCA Visualizations
+library("FactoMineR") #PCA functions / Hierarchical Clustering
+library(ade4) #PCA Visualizations
+library(cluster) #Basic Clustering Algorithms
+library(fpc) #DBSCAN
+library(dbscan) #DBSCAN
+library(mclust) #Model Clustering
+library(kernlab) #Spectral Clustering
+
+
+#Set Working Directory
+setwd('/Users/bhupatiraju/Downloads')
+
+#Read in Dataset
+bsket <- read.csv(file="CollegeBasketballPlayers2009-2021.csv", header=TRUE)
+bsket
+ 
+basket = bsket[bsket$Min_per > 28.7, ]
+
+# No of unique values
+unique(basket$player_name)
+unique(basket$team)
+unique(basket$conf)
+
+
+#Check Sample Size and Number of Variables
+dim(basket)
+names(basket)
+
+
+#Check for Missing Values (i.e. NAs)
+
+#For All Variables
+#subsetting data
+
+#Check for missing values for All Variables
+sum(is.na(basket))
+basket2 <- na.omit(basket)
+
+sum(is.na(basket2))
+
+basket2
+
+basket2b <-basket[,c(8:20, 23, 26, 28, 30:33, 36, 39:41, 45, 49:53,55)]
+
+# Selecting columns
+basket1 <- basket[,c(4:25,29:32,46 )]
+
+#Listwise Deletion
+basket1 <- na.omit(basket1)
+basket1 
+
+#Check new data has no missing data
+sum(is.na(basket1))
+dim(basket1)
+
+
+#Check dimensions and column names of new data 
+dim(basket1)
+names(basket1)
+
+
+# Let's first scale the data:
+# Normalizing the Data
+basket_scale <- scale(basket1) 
+
+library(cluster)
+library(factoextra)
+
+basket_scale <- scale(basket1) 
+
+#Determining Optimal Number of Clusters
+fviz_nbclust(basket_scale, kmeans)
+
+
+#Run K-Means Cluster Analysis
+set.seed(123)
+basket_k <- kmeans(basket_scale, centers=2, iter.max=123, nstart = 15)
+basket_k
+
+
+# Cluster size
+basket_k$size
+# end up in 3 clusters of sizes - 391 668 376
+#model explains 30.3% of the model
+
+# Cluster means
+basket_k$centers
+#
+
+# Visualize
+# Note with the large dataset it will take a long time, but is good for small sample size ~1,000 samples
+library("factoextra")
+fviz_cluster(basket_k, data = basket_scale, 
+             ellipse.type = "convex",
+             palette = "jco",
+             repel = TRUE,
+             ggtheme = theme_minimal())
+
+
+#Another Way to Choose Optimal Clusters
+
+#Enter name of the data matrix to be clustered here:
+my.data.matrix <- basket_scale
+
+
+my.k.choices <- 2:6
+n <- length(my.data.matrix[,1])
+wss1 <- (n-1)*sum(apply(my.data.matrix,2,var))
+wss <- numeric(0)
+for(i in my.k.choices) {
+  W <- sum(kmeans(my.data.matrix,i)$withinss)
+  wss <- c(wss,W)
+}
+wss <- c(wss1,wss)
+plot(c(1,my.k.choices),wss,type='l',xlab='Number of clusters', ylab='Within-groups sum-of-squares', lwd=2)
+
+
+
+#Run K-Means Cluster Analysis for 4 Clusters
+set.seed(123)
+basket_k4 <- kmeans(basket_scale, centers=6, iter.max=100, nstart = 25)
+basket_k4
+
+# Visualize
+library("factoextra")
+fviz_cluster(basket_k4, data = basket_scale, 
+             ellipse.type = "convex",
+             palette = "jco",
+             repel = TRUE,
+             ggtheme = theme_minimal())
+
+# Cluster size
+basket_k4$size
+
+# Cluster means
+basket_k4$centers
+
+
+
+
+#Run K-Means Cluster Analysis for 4 Clusters
+set.seed(123)
+basket_k2 <- kmeans(basket_scale, centers=2, iter.max=100, nstart = 25)
+basket_k2
+
+# Visualize
+library("factoextra")
+fviz_cluster(basket_k2, data = basket_scale, 
+             ellipse.type = "convex",
+             palette = "jco",
+             repel = TRUE,
+             ggtheme = theme_minimal())
+
+# Cluster size
+basket_k2$size
+
+# Cluster means
+basket_k2$centers
+
+#Aggregating the Clusters
+basket_k4_clust <- lapply(1:4, function(nc) row.names(basket_scale)[basket_k4$cluster==nc])  
+basket_k4_clust 
+
+
+#Alternative Way of Running K-Means Clustering
+
+library("factoextra")
+# K-means clustering
+basket_kmeans4 <- eclust(basket_scale, "kmeans", k = 6,
+                            nstart = 15, graph = FALSE)
+basket_kmeans4
+
+
+# Visualize the silhouette of clusters
+fviz_silhouette(basket_kmeans4)
+
+
+
+
+
+

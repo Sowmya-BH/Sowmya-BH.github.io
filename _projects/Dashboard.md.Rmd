@@ -1,0 +1,300 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+library(FactoMineR) #Dataset and HCPC
+library(Hmisc) #Describe Function
+library(psych) #Multiple Functions for Statistics and Multivariate Analysis
+library(GGally) #ggpairs Function
+library(ggplot2) #ggplot2 Functions
+library(vioplot) #Violin Plot Function
+library(corrplot) #Plot Correlations
+library(REdaS) #Bartlett's Test of Sphericity
+#library(psych) #PCA/FA functions
+library(factoextra) #PCA Visualizations
+library("FactoMineR") #PCA functions / Hierarchical Clustering
+library(ade4) #PCA Visualizations
+library(cluster) #Basic Clustering Algorithms
+library(fpc) #DBSCAN
+library(dbscan) #DBSCAN
+library(mclust) #Model Clustering
+library(kernlab) #Spectral Clustering
+
+
+#Set Working Directory
+setwd('/Users/bhupatiraju/Desktop/PREDICTIVE ANALYTICS')
+
+#Read in Dataset
+basket <- read.csv(file="twenty17-18.csv", header=TRUE)
+
+
+#Check new data has no missing data
+dim(basket)
+dim(basket)
+names(basket)
+
+
+# 'PTS', 'AST', 'ORB', 'DRB', 'STL','BLK', 'TOV', '2PA', '3PA', 'FTA','2P%', '3P%', 'FT%','LEAP', 'AGL', 'STR'
+basket1 <-basket[,c(16,17,19,20,23,22,37,59,60,62,63,64,65)]
+
+
+#Check new data has no missing data
+sum(is.na(basket2))
+basket2 <- na.omit(basket1)
+dim(basket2)
+
+str(basket2)
+
+#center and scale the data
+basket2_scale <- scale(basket2) 
+
+str(basket2)
+
+
+
+
+######################################################################################################################
+
+basketc = basket[basket$Min_per > 28.7, ]
+dim(basketc)
+
+
+
+#Check new data has no missing data
+dim(basketc)
+names(basketc)
+
+
+# 'PTS', 'AST', 'ORB', 'DRB', 'STL','BLK', 'TOV', '2PA', '3PA', 'FTA','2P%', '3P%', 'FT%','LEAP', 'AGL', 'STR'
+basketc <-basketc[,c(16,17,19,20,23,22,37,59,60,62,63,64,65)]
+
+
+#Check new data has no missing data
+sum(is.na(basketc))
+basketc1 <- na.omit(basketc)
+sum(is.na(basketc1))
+
+str(basketc1)
+
+#center and scale the data
+basketc1_scale <- scale(basketc1) 
+
+str(basket2)
+
+######################################################################################################################
+
+
+#Determining Optimal Number of Clusters
+fviz_nbclust(basketc1_scale, kmeans)
+
+fviz_nbclust(mainData, kmeans, method = "wss")
+fviz_nbclust(mainData, kmeans, method = "silhouette")
+fviz_nbclust(mainData, kmeans, method = "gap_stat")
+
+
+#Run K-Means Cluster Analysis
+set.seed(123)
+basket2_kc <- kmeans(basketc1_scale, centers=5, iter.max=123, nstart = 15)
+basket2_kc
+
+# Cluster size
+basket2_kc$size
+
+# Cluster means
+basket2_kc$centers
+
+# Visualize
+#Note with the large dataset it will take a long time, but is good for small sample size ~1,000 samples
+library("factoextra")
+fviz_cluster(basket2_kc, data = basketc1_scale, 
+             ellipse.type = "convex",
+             palette = "jco",
+             repel = TRUE,
+             ggtheme = theme_minimal())
+             
+             
+             
+#Enter name of the data matrix to be clustered here:
+my.data.matrix <- basketc1_scale  
+
+my.k.choices <- 2:5
+n <- length(my.data.matrix[,1])
+wss1 <- (n-1)*sum(apply(my.data.matrix,2,var))
+wss <- numeric(0)
+for(i in my.k.choices) {
+  W <- sum(kmeans(my.data.matrix,i)$withinss)
+  wss <- c(wss,W)
+}
+wss <- c(wss1,wss)
+plot(c(1,my.k.choices),wss,type='l',xlab='Number of clusters', ylab='Within-groups sum-of-squares', lwd=2)
+
+##########################################################################################################################
+
+#Set Working Directory
+setwd('/Users/bhupatiraju/Desktop/PREDICTIVE ANALYTICS')
+
+
+#Read in Dataset
+basket <- read.csv(file="playersinfo.csv", header=TRUE)
+bkt<-read.csv(file='powerplay.csv', header=TRUE)
+
+names(bkt)
+basket$ast
+basket$blk
+basket$treb
+
+
+#Subsetting data
+#q3 <-basket[,c(8,10,11,23,40)] # blocks, dunks, orb,drb
+q31<-basket[,c(8,15,40)]  #efg,fta,dunksmade
+q32<-basket[,c(11,17,20)]#dreb,twopm,tpm
+q33<-basket[,c(54,57,59)]#assists,blocks, drebounds
+q34<-basket[,c(55,57,58,59,60)]#PTS, REB, AST, STL, and BLK
+
+#q35<-bkt[,c(65,64,62,63,60,21,18)]
+
+
+#Show for first 6 rows of data
+head(q3)
+
+names(q3)
+
+str(q3)
+
+#check null values
+sum(is.na(q34))
+
+#Listwise deletion
+q3 <- na.omit(q34)
+
+sum(is.na(q3))
+
+
+#Different Cluster Methods
+library(cluster)
+library(factoextra)
+
+# Let's first scale the data:
+#Normalizing the Data
+q3_scale <- scale(q3) 
+
+
+#K-Means Clustering
+
+#Determining Optimal Number of Clusters
+fviz_nbclust(q3_scale, kmeans)
+fviz_nbclust(q3_scale, kmeans, method = "wss")
+fviz_nbclust(q3_scale, kmeans, method = "silhouette")
+#fviz_nbclust(q3_scale, kmeans, method = "gap_stat")
+
+
+#Run K-Means Cluster Analysis
+set.seed(123)
+q3_k2 <- kmeans(q3_scale, centers=3, iter.max=123, nstart = 15)
+q3_k2
+
+
+#Run K-Means Cluster Analysis
+set.seed(123)
+q3_k2 <- kmeans(q3_scale, centers=4, iter.max=123, nstart = 15)
+q3_k2
+
+
+
+# Cluster size
+q3_k2$size
+
+# Cluster means
+q3_k2$centers
+
+
+# Visualize
+#Note with the large dataset it will take a long time, but is good for small sample size ~1,000 samples
+library("factoextra")
+fviz_cluster(q3_k2, data = q3_scale, 
+             ellipse.type = "convex",
+             palette = "jco",
+             repel = TRUE,
+             ggtheme = theme_minimal())
+#########################################################################################################################
+
+aggregate(q34, by=list(cluster=q3_k2$cluster), mean)
+
+dd <- cbind(q34, cluster = q3_k2$cluster)
+head(dd)
+##########################################################################################################################
+#Enter name of the data matrix to be clustered here:
+my.data.matrix <- q3_scale  
+
+my.k.choices <- 2:7
+n <- length(my.data.matrix[,1])
+wss1 <- (n-1)*sum(apply(my.data.matrix,2,var))
+wss <- numeric(0)
+for(i in my.k.choices) {
+  W <- sum(kmeans(my.data.matrix,i)$withinss)
+  wss <- c(wss,W)
+}
+wss <- c(wss1,wss)
+plot(c(1,my.k.choices),wss,type='l',xlab='Number of clusters', ylab='Within-groups sum-of-squares', lwd=2)
+
+
+#Hierarchical Clustering
+
+#Single Cluster
+
+# Getting distance matrix:
+dist_q3 <- dist(q3_scale)
+dist_q3   
+
+# Single linkage:
+q3_single_link <- hclust(dist_q3, method='single')
+q3_single_link
+
+# Plotting the single linkage dendrogram:
+
+plot(q3_single_link, labels=row.names(q3), ylab="Distance")
+
+# complete linkage:
+q3_complete_link <- hclust(dist_q3, method='complete')
+q3_complete_link
+
+# Plotting the complete linkage dendrogram:
+
+plot(q3_complete_link, labels=row.names(q3), ylab="Distance")
+
+
+# Average linkage:
+
+q3_avg_link <- hclust(dist_q3, method='average')
+q3_avg_link
+
+# Plotting the average linkage dendrogram:
+
+plot(q3_avg_link, labels=row.names(q3), ylab="Distance")
+
+
+# Complete Linkage Solution:
+
+cut_4 <- cutree(q3_complete_link, k=4)
+cut_4    # printing the "clustering vector"
+
+q3_hk4_clust <- lapply(1:4, function(nc) row.names(q3)[cut_4==nc])  
+q3_hk4_clust   # printing the clusters in terms of the row numbers
+
+##########################################################################################################################
