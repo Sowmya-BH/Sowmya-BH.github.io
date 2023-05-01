@@ -1,8 +1,8 @@
 ---
-name: PCA Scree Plots for Correlated and Uncorrelated Variables:
+name: PCA Scree Plots for Correlated and Uncorrelated Variables
 tools: [Python, Altair, Matplotlib]
 image: assets/json/Dashboard_primary.json
-description:Behavior of Scree Plots using Altair!-Sowmya Bhupatiraju, Bennett Custer, Job Monita
+description: Behavior of Scree Plots using Altair!-Sowmya Bhupatiraju, Bennett Custer, Job Monita
 custom_js:
   - vega.min
   - vega-lite.min
