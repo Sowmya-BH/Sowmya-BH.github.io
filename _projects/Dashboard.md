@@ -64,6 +64,26 @@ The use of scree plots and cumulative variance is an effective method to visuali
 
 *Next Steps: Our next steps will be to run some experiments to determine if PCA is a viable solution for our dataset. We will also explore other dimensionality reduction techniques and compare their performance to that of PCA. Ultimately, our goal is to find the best approach for reducing the dimensionality of our dataset while retaining as much information as possible*
 
+Here’s a few contextual visualizations that we found on the web (Sources for these visualizations are listed below):
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/dashboard_line.json" style="width: 100%"></vegachart>
+
+For this contextual visualization, the author was answering to the question “How have the number of crashes changed over time”[ Predicting], and the author has answered the question by showing a line chart of the number of traffic crashes per week over time withing of the city of Chicago.
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/dashboard_map.json" style="width: 100%"></vegachart>
+
+For our second contextual visualization, the author has displayed an interactive Map of the city of New York, through it the author makes us explore by detail each the collision case of the city of New York, the programming language used in thus scenario is R.
+
+Sources For Contextual Datasets:
+
+“Predicting Injuries for Chicago Traffic Crashes.” Julia Silge, 4 Jan. 2021, https://juliasilge.com/blog/chicago-traffic-model/.
+
+“New York City Motor Vehicle Collision Data Visualization.” Data Science Blog, https://nycdatascience.com/blog/student-works/new-york-city-motor-vehicle-collision-data-visualization/.
+
+
+
+
+
 
 
 <!-- these are written in a combo of html and liquid --> 
