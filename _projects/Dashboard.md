@@ -17,7 +17,6 @@ custom_js:
 # Uncovering the Optimal Principal Components: The Power of PCA Scree Plots with Cumulative Variance for Correlated and Uncorrelated Variables:
 In this visualization, we explore the Behavior of Scree Plots for Correlated and Uncorrelated Variables
 
-<vegachart schema-url="{{ site.baseurl }}/assets/json/Dashboard_primary.json" style="width: 100%"></vegachart>
 
 #### Introduction
 We have a large dataset of 2.8 million accident records with 47 attributes that exploded to 104 columns after data engineering. Given the size and complexity of the dataset, we explored the possibility of applying PCA (Principal Component Analysis) which is a widely used statistical method for reducing the dimensionality of large datasets while retaining as much of the original information as possible.
