@@ -9,6 +9,10 @@ custom_js:
   - vega-embed.min
   - justcharts
 ---
+**Team Mates**
+* Sowmya Bhupatiraju
+* Bennett Custer
+* Job Monita
 
 # Uncovering the Optimal Principal Components: The Power of PCA Scree Plots with Cumulative Variance for Correlated and Uncorrelated Variables:
 In this visualization, we explore the Behavior of Scree Plots for Correlated and Uncorrelated Variables
