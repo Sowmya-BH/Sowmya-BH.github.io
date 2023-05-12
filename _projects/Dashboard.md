@@ -9,12 +9,12 @@ custom_js:
   - vega-embed.min
   - justcharts
 ---
-**Team Mates**
+**Team Members**
 * Sowmya Bhupatiraju
 * Bennett Custer
 * Job Monita
 
-# Uncovering the Optimal Principal Components: The Power of PCA Scree Plots with Cumulative Variance for Correlated and Uncorrelated Variables:
+## Uncovering the Optimal Principal Components: The Power of PCA Scree Plots with Cumulative Variance for Correlated and Uncorrelated Variables:
 In this visualization, we explore the Behavior of Scree Plots for Correlated and Uncorrelated Variables
 
 
@@ -46,7 +46,7 @@ In a scree plot, the eigenvalues are plotted on the y-axis and the principal com
 When dealing with correlated variables, PCA can help to identify the underlying structure of the data and remove redundancy, by transforming the variables into uncorrelated principal components. The uncorrelated principal components provide a more accurate representation of the true underlying structure of the data, and can be used to build more accurate models. Therefore, when creating a scree plot for correlated variables, we expect to see a rapid decline in eigenvalues and a slower decline in cumulative variance explained as we move from the first to the last principal component.
 For correlated variables, the eigenvalues and cumulative variance explained are expected to decline at a slower rate as the number of principal components increases. This is because correlated variables contain redundant information, and PCA needs to remove this redundancy by grouping them together in fewer principal components.
 
-####### Code Walkthrough:
+###### Code Walkthrough:
  The Dashboard consists of a rect plot for correlated variables, as part of a larger layered plot that includes a scree plot with cumulative variance. The rect plot shows the explained variance for each principal component (PC), with the x-axis representing the PC component number and the y-axis representing the amount of explained variance. The color of each rectangle corresponds to the PC component number, with a tealblues color scheme used. Also a point plot is overlaid on the rect plot to faciltate the elbow method of finding the number of principle components. 
  The code also includes text annotations for each rectangle, displaying the amount of explained variance as a floating point number with 3 decimal places. Additionally, the code includes a scree plot with cumulative variance, represented as a line plot. This plot displays the cumulative amount of explained variance for each PC component, allowing users to identify the optimal number of PCs to include in their analysis.
  Overall, this code is part of a dashboard that enables users to visualize the results of a principal component analysis for both correlated and uncorrelated variables. By using scree plots with cumulative variance, users can determine the optimal number of PCs to include in their analysis, helping to reduce the dimensionality of their data while retaining as much information as possible.
@@ -61,9 +61,9 @@ For uncorrelated variables, the eigenvalues and cumulative variance explained ar
 The use of scree plots and cumulative variance is an effective method to visualize and analyze the contribution of each principal component to the overall variance of the dataset. By understanding the behavior of scree plots for correlated and uncorrelated variables, we can determine the optimal number of principal components to retain for subsequent analysis. Generally, we want to retain enough principal components to capture at least 80-90% of the total variance in the data
 
 
-####### Challenges: One potential challenge of using PCA is that it can be computationally expensive for large datasets like ours. Additionally, the effectiveness of PCA may be limited by the nature of the data and the relationships between the variables.*
+###### Challenges: One potential challenge of using PCA is that it can be computationally expensive for large datasets like ours. Additionally, the effectiveness of PCA may be limited by the nature of the data and the relationships between the variables.*
 
-####### Next Steps: Our next steps will be to run some experiments to determine if PCA is a viable solution for our dataset. We will also explore other dimensionality reduction techniques and compare their performance to that of PCA. Ultimately, our goal is to find the best approach for reducing the dimensionality of our dataset while retaining as much information as possible*
+###### Next Steps: Our next steps will be to run some experiments to determine if PCA is a viable solution for our dataset. We will also explore other dimensionality reduction techniques and compare their performance to that of PCA. Ultimately, our goal is to find the best approach for reducing the dimensionality of our dataset while retaining as much information as possible*
 
 
 
