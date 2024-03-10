@@ -1,14 +1,14 @@
 # Online CV Templete for IS445
 
-This is a resource for [IS445 as of Fall 2023](https://uiuc-ischool-dataviz.github.io/is445_bcubcg_fall2022/).  It is a way to host an online CV with interactive visualizations.  See the course page for more materials.
+This is a resource for [IS445](https://uiuc-ischool-dataviz.github.io/is445_bcubcg/).  It is a way to host an online CV with interactive visualizations.  See the course page for more materials.
 
 # How to use this repo
 
 ## Download & install
 
  1. clone this repo or download the contents
- 1. make sure you have Ruby *properly* installed (see [the course's install instructions](https://uiuc-ischool-dataviz.github.io/is445_bcubcg_fall2022/week09/installation_instructions_week11.html) for this process)
- 1. Install using `bundle install` (see [the course's install instructions](https://uiuc-ischool-dataviz.github.io/is445_bcubcg_fall2022/week09/installation_instructions_week11.html))
+ 1. make sure you have Ruby *properly* installed (see [the course's install instructions](https://uiuc-ischool-dataviz.github.io/is445_bcubcg_fall/week09/installation_instructions_week11.html) for this process)
+ 1. Install using `bundle install` (see [the course's install instructions](https://uiuc-ischool-dataviz.github.io/is445_bcubcg_fall/week09/installation_instructions_week11.html))
  1. Host locally with `bundle exec jekyll serve` or `bundle exec jekyll serve -l` (live reload)
  1. Modify files as needed (see sections below)
 
